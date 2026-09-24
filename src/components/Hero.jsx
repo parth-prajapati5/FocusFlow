@@ -38,7 +38,7 @@ export default function Hero() {
             with AI-powered insights — all in one beautiful Windows app.
           </p>
           <div className="hero-actions">
-            <a href="https://github.com/parth-prajapati5/Clarity/releases/download/untagged-fe2adc0602f8d2a3a254/Clarity_0.1.0_x64-setup.exe" className="btn btn-primary btn-lg">
+            <a href="https://github.com/parth-prajapati5/Clarity/releases/download/untagged-fe2adc0602f8d2a3a254/Clarity_0.1.0_x64-setup.exe" className="btn btn-primary btn-lg" download>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="7 10 12 15 17 10" />
