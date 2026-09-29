@@ -1,32 +1,30 @@
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import TrustedBy from './components/TrustedBy'
-import Features from './components/Features'
-import DashboardShowcase from './components/DashboardShowcase'
+import UsageTracking from './components/UsageTracking'
+import WebHabits from './components/WebHabits'
+import DeepFocus from './components/DeepFocus'
+import MindfulIntervention from './components/MindfulIntervention'
+import PrivacyStory from './components/PrivacyStory'
 import HowItWorks from './components/HowItWorks'
-import AICoach from './components/AICoach'
-import Stats from './components/Stats'
-import Testimonials from './components/Testimonials'
 import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
-import Blog from './components/Blog'
-import DownloadCTA from './components/DownloadCTA'
+import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 
 export default function App() {
-  // Smooth anchor scroll — accounts for sticky navbar height
+  // Smooth scroll offset adjustment for sticky navbar
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const anchor = e.target.closest('a[href^="#"]')
       if (!anchor) return
       const href = anchor.getAttribute('href')
-      if (href === '#') return
+      if (href === '#' || !href) return
       const target = document.querySelector(href)
       if (!target) return
       e.preventDefault()
-      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 80
-      const top = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 16
+      const headerHeight = 64
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight
       window.scrollTo({ top, behavior: 'smooth' })
     }
     document.addEventListener('click', handleAnchorClick)
@@ -34,23 +32,21 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <div className="min-h-screen bg-[#F7F7F2] font-body text-[#151515] antialiased selection:bg-[#C7F36B] selection:text-[#151515]">
       <Navbar />
-      <main>
+      <main className="pt-16">
         <Hero />
-        <TrustedBy />
-        <Features />
-        <DashboardShowcase />
+        <UsageTracking />
+        <WebHabits />
+        <DeepFocus />
+        <MindfulIntervention />
+        <PrivacyStory />
         <HowItWorks />
-        <AICoach />
-        <Stats />
-        <Testimonials />
         <Pricing />
         <FAQ />
-        <Blog />
-        <DownloadCTA />
+        <FinalCTA />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

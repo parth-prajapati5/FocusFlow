@@ -1,90 +1,62 @@
-import { useRef } from 'react'
-import useScrollAnimation from '../hooks/useScrollAnimation'
-
-const STEPS = [
-  {
-    number: '01',
-    title: 'Download the App',
-    description: 'One-click installer for Windows 10 and 11. Under 50MB. No bloatware. Starts in seconds.',
-    delay: '0',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
-    ),
-  },
-  {
-    number: '02',
-    title: 'Track Your Habits',
-    description: 'FocusFlow silently monitors your app usage in the background. See your first report within minutes.',
-    delay: '100',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" strokeWidth="2">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4" />
-        <circle cx="12" cy="10" r="2" />
-      </svg>
-    ),
-  },
-  {
-    number: '03',
-    title: 'Receive AI Insights',
-    description: 'Your AI coach analyzes your patterns and delivers personalized, actionable recommendations every morning.',
-    delay: '200',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2">
-        <path d="M12 20h9" />
-        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-      </svg>
-    ),
-  },
-  {
-    number: '04',
-    title: 'Build Better Habits',
-    description: 'Set goals, track streaks, earn achievements, and watch your productivity transform — week by week.',
-    delay: '300',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-      </svg>
-    ),
-  },
-]
-
-function StepCard({ number, title, description, icon, delay, last }) {
-  return (
-    <div className="step-card" data-animate="fade-up" data-delay={delay}>
-      <div className="step-number" aria-hidden="true">{number}</div>
-      <div className="step-icon-wrap" aria-hidden="true">{icon}</div>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      {!last && <div className="step-connector" aria-hidden="true" />}
-    </div>
-  )
-}
-
 export default function HowItWorks() {
-  const ref = useRef(null)
-  useScrollAnimation(ref)
-
   return (
-    <section className="how-it-works section" id="how-it-works" ref={ref} aria-labelledby="hiw-heading">
-      <div className="container">
-        <div className="section-header" data-animate="fade-up">
-          <div className="section-chip">How It Works</div>
-          <h2 id="hiw-heading" className="section-title">
-            Up and running in<br /><span className="gradient-text">under 2 minutes</span>
+    <section className="py-20 px-6 lg:px-12 bg-[#F7F7F2] border-b border-[#E2E2D8]" id="how-it-works">
+      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#8FBF3F] font-bold">Effortless Setup</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#151515] tracking-tight mt-2 mb-3">
+            Up and running in 60 seconds.
           </h2>
-          <p className="section-subtitle">
-            No complex setup. No account needed. Just download and start building better habits.
+          <p className="font-body text-base text-[#52524E]">
+            No complex daemon setups, no admin permission overrides, and zero bloatware.
           </p>
         </div>
-        <div className="steps-grid">
-          {STEPS.map((step, i) => (
-            <StepCard key={step.number} {...step} last={i === STEPS.length - 1} />
-          ))}
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Step 1 */}
+          <div className="p-6 rounded-xl bg-white border border-[#E2E2D8] flex flex-col justify-between shadow-xs hover:border-[#D8D8CE] transition-all">
+            <div>
+              <div className="font-mono text-2xl font-bold text-[#8FBF3F] mb-4">01</div>
+              <h3 className="font-display font-bold text-lg text-[#151515] mb-2">Download the Installer</h3>
+              <p className="font-body text-xs text-[#52524E] leading-relaxed">
+                Get the signed Windows package (.msix or portable .exe). Under 65MB with zero telemetry libraries.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-[#E2E2D8] flex items-center gap-2 font-mono text-xs text-[#151515]">
+              <span className="material-symbols-outlined text-[16px] text-[#8FBF3F]">verified</span>
+              <span>Authenticode Signed</span>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="p-6 rounded-xl bg-white border border-[#E2E2D8] flex flex-col justify-between shadow-xs hover:border-[#D8D8CE] transition-all">
+            <div>
+              <div className="font-mono text-2xl font-bold text-[#8FBF3F] mb-4">02</div>
+              <h3 className="font-display font-bold text-lg text-[#151515] mb-2">Runs Quietly in System Tray</h3>
+              <p className="font-body text-xs text-[#52524E] leading-relaxed">
+                Consumes less than 0.2% CPU and roughly 38MB of RAM. The C++/Rust engine operates silently in the background.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-[#E2E2D8] flex items-center gap-2 font-mono text-xs text-[#151515]">
+              <span className="material-symbols-outlined text-[16px] text-[#8FBF3F]">memory</span>
+              <span>&lt; 0.2% CPU Footprint</span>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="p-6 rounded-xl bg-white border border-[#E2E2D8] flex flex-col justify-between shadow-xs hover:border-[#D8D8CE] transition-all">
+            <div>
+              <div className="font-mono text-2xl font-bold text-[#8FBF3F] mb-4">03</div>
+              <h3 className="font-display font-bold text-lg text-[#151515] mb-2">Understand &amp; Direct Habits</h3>
+              <p className="font-body text-xs text-[#52524E] leading-relaxed">
+                Review your intuitive visual overview at the end of each workday, or trigger deep focus sprints whenever you need uninterrupted flow.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-[#E2E2D8] flex items-center gap-2 font-mono text-xs text-[#151515]">
+              <span className="material-symbols-outlined text-[16px] text-[#8FBF3F]">insights</span>
+              <span>Pure Diagnostic Truth</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
